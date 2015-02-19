@@ -1,9 +1,9 @@
 <?php
-namespace MarkTopper\CutyCapt;
+namespace MarkTopper\CutyCapt\Command;
 
 use MarkTopper\Validator\Validator;
 
-class CommandGenerator {
+class Generator {
   
   protected $values = array(
     // The URL to capture (http:...|file:...|...)
