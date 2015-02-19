@@ -12,6 +12,7 @@
   ],
   "require": {
     "marktopper/cutycapt": "1.*",
+    "marktopper/xvfb-run-php": "dev-master",
     "marktopper/validator-php": "dev-master"
   },
   "autoload": {
@@ -21,5 +22,6 @@
     "psr-0": {
         "MarkTopper\\CutyCapt": "src/MarkTopper/CutyCapt/"
     }
-  }
+  },
+	"minimum-stability": "dev"
 }
