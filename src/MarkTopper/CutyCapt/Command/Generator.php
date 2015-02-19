@@ -124,7 +124,8 @@ class Generator {
 	
 	function __construct($xvfb_run = null)
 	{
-		if (!$xvfb_run instanceof xvfb_run)
+		$this->xvfb_run = new xvfb_run;
+		if ($xvfb_run instanceof xvfb_run) $this->xvfb_run = $xvfb_run;
 	}
 	
 	protected function is_valid_out_format($format)
