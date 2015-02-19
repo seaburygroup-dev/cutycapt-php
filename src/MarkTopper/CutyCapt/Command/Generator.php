@@ -155,7 +155,11 @@ class Generator {
 		{
 			Validator::validOrFail($value);
 			if (isset($value['value']))
-			$command .= " --" . $key . "=" . $value['value'];
+			{
+				$v = $value['value'];
+				if (in_array($key, ['out'])) $v = self::$base_output . $v;
+				$command .= " --" . $key . "=" . $v;
+			}
 		}
 		
 		return $command;
