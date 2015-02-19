@@ -2,6 +2,7 @@
 namespace MarkTopper\CutyCapt\Command;
 
 use MarkTopper\Validator\Validator;
+use MarkTopper\xvfb_run\Command\Generator as xvfb_run;
 
 class Generator {
 	
@@ -119,6 +120,13 @@ class Generator {
 	
 	public static $base_output;
 	
+	protected $xvfb_run;
+	
+	function __construct($xvfb_run = null)
+	{
+		if (!$xvfb_run instanceof xvfb_run)
+	}
+	
 	protected function is_valid_out_format($format)
 	{
 		return in_array($format, $this->valid_out_formats);
@@ -133,14 +141,18 @@ class Generator {
 	
 	public function getCommand()
 	{
-		$command = xvfb_run_path() . " --server-args=\"-screen 0, 1280x1024x24\" " . cutycapt_path() . " ";
+		$command = $this->xvfb_run->getCommand();
+		$command .= " ";
+		$command .= cutycapt_path();
+		$command .= " ";
+		// xvfb_run_path() . " --server-args=\"-screen 0, 1280x1024x24\"
 		//--url=http://www.google.com --out=google.png";
 		
 		//Validator::$error_mode = 'fail';
 		
 		foreach ($this->values AS $key => $value)
 		{
-			// Validator::single($value);
+			Validator::validOrFail($value);
 			if (isset($value['value']))
 			$command .= " --" . $key . "=" . $value['value'];
 		}
