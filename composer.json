@@ -1,0 +1,24 @@
+{
+  "name": "marktopper/cutycapt-php",
+  "description": "A easy to use PHP library for running CutyCapt",
+  "version": "1.0",
+  "license": "MIT",
+  "type": "package",
+  "authors": [
+    {
+      "name": "Mark Topper",
+      "email": "hi@webman.io"
+    }
+  ],
+  "require": {
+    "marktopper/cutycapt": "1.*"
+  },
+  "autoload": {
+    "classmap": [
+        "src/MarkTopper/CutyCapt"
+    ],
+    "psr-0": {
+        "MarkTopper\\CutyCapt": "src/MarkTopper/CutyCapt/"
+    }
+  }
+}
