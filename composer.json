@@ -12,7 +12,7 @@
   ],
   "require": {
     "marktopper/cutycapt": "1.*",
-    "marktopper/xvfb-run": "dev-master",
+    "marktopper/xvfb-run-php": "dev-master",
     "marktopper/validator-php": "dev-master"
   },
   "autoload": {
