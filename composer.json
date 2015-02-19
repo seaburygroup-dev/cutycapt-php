@@ -11,8 +11,7 @@
     }
   ],
   "require": {
-    "marktopper/cutycapt": "1.*",
-    "marktopper/xvfb-run-php": "dev-master"
+    "marktopper/cutycapt": "1.*"
   },
   "autoload": {
     "classmap": [
