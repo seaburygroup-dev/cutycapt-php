@@ -115,7 +115,7 @@ class Generator {
     ]
   );
   
-  protected $valid_out_formats = array('svg', 'pdf', 'ps', 'png', 'jpeg', 'tiff', 'gif', 'bmp', 'jpg');
+  protected $valid_out_formats = array('svg', 'pdf', 'ps', 'png', 'jpeg', 'tiff', 'gif', 'bmp', 'ppm', 'xbm', 'xpm', 'jpg', 'itext', 'html', 'rtree', 'mng');
   
   protected $formats_aliases = array('jpg' => 'jpeg');
   
