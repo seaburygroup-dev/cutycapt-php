@@ -2,7 +2,7 @@
 namespace MarkTopper\CutyCapt\Command;
 
 use MarkTopper\Validator\Validator;
-use MarkTopper\xvfb_run\Command\Generator as xvfb_run;
+use MarkTopper\xvfb_run\Runner as xvfb_run;
 
 class Generator {
 	
