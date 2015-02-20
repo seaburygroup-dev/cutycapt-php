@@ -122,10 +122,14 @@ class Generator {
 	
 	protected $xvfb_run;
 	
+	protected $files_dir;
+	
 	function __construct($xvfb_run = null)
 	{
 		$this->xvfb_run = new xvfb_run;
+		$this->files_dir = __DIR__ . '/../../../../files/';
 		if ($xvfb_run instanceof xvfb_run) $this->xvfb_run = $xvfb_run;
+		if (!self::$base_output) self::$base_output = $this->files_dir;
 	}
 	
 	protected function is_valid_out_format($format)
@@ -140,25 +144,39 @@ class Generator {
 		return Validator::single($value, $rules);
 	}
 	
+	protected function baseurl()
+	{
+		$url = parse_url($this->getUrl());
+		return $url['host'];
+	}
+	
+	protected function out($value = null)
+	{
+		self::$base_output = self::$base_output ? self::$base_output : $this->files_dir;
+		$out = $value ? $value : $this->baseurl() . '-' . date('Y-m-d-H-i-s') . '.jpg';
+		if ($this->getOut() != $out) $this->setOut($out);
+		return self::$base_output . $out;
+	}
+	
 	public function getCommand()
 	{
 		$command = $this->xvfb_run->getCommand();
 		$command .= " ";
 		$command .= cutycapt_path();
 		$command .= " ";
-		// xvfb_run_path() . " --server-args=\"-screen 0, 1280x1024x24\"
-		//--url=http://www.google.com --out=google.png";
-		
-		//Validator::$error_mode = 'fail';
 		
 		foreach ($this->values AS $key => $value)
 		{
-			Validator::validOrFail($value);
+			Validator::validOrFail($value); // TODO run $this->validator() instead
 			if (isset($value['value']))
 			{
 				$v = $value['value'];
-				if (in_array($key, ['out'])) $v = self::$base_output . $v;
+				if (in_array($key, ['out'])) $v = $this->out($v);
 				$command .= " --" . $key . "=" . $v;
+			}
+			else if (!isset($value['value']) && $key == 'out')
+			{
+				$command .= " --" . $key . "=" . $this->out();
 			}
 		}
 		
@@ -184,9 +202,8 @@ class Generator {
 		{
 			case 'get_': return $this->getter(substr(snake_case($method), 4)); break;
 			case 'set_': return $this->setter(substr(snake_case($method), 4), isset($parameters[0]) ? $parameters[0] : null); break;
+			default: throw new \Exception('Method "' . $method . '" not found'); break;
 		}
-		
-		die('method "' . $method . '" does not exists');
 	}
 	
 }
