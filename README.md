@@ -27,7 +27,7 @@ $cutycapt->url('http://example.com');
 ```
 
 ### output
-Sets the url to capture (This have to be the comlete path)
+Save the captured image to this location (this have to be the comlete path)
 ```
 $cutycapt->output(__DIR__ . '/example.png');
 ```
