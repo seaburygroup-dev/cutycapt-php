@@ -1,7 +1,7 @@
 {
   "name": "marktopper/cutycapt-php",
   "description": "A easy to use PHP library for running CutyCapt",
-  "version": "1.0",
+  "version": "1.0.1",
   "license": "MIT",
   "type": "package",
   "authors": [
