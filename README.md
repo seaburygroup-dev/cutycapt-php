@@ -24,8 +24,8 @@ $cutycapt->run();
 
 # Options
 ### Note
-All options are set using `$cutycapt->setOption('value')` where in `setOption` the `Option` is the name of the setting trying to set.
-Like if you want to set the url, then it would be `$cutycapt->setUrl('http://www.example.com')`.
+All options are set using `$cutycapt->setOption('value')` where in `setOption` the `Option` is the name of the setting trying to set.   
+Like if you want to set the url, then it would be `$cutycapt->setUrl('http://www.example.com')`.   
 Same goes with getting options, like getting the url `$cutycapt->getUrl()` returns `http://www.example.com` if that was the url set.
 
 ### Option list
