@@ -10,16 +10,13 @@ run `composer require marktopper/cutycapt-php 1.*`
 $cutycapt = new MarkTopper\CutyCapt\CutyCapt;
 
 // set url to capture
-$cutycapt->setUrl('http://google.com');
+$cutycapt->url('http://google.com');
 
-// set output (this have to be the complete path)
-$cutycapt->setUrl(__DIR__ . '/google.png');
+// save output to location (this have to be the complete path, unless you set base_output)
+$cutycapt->output(__DIR__ . '/google.png');
 
-// get generated command
-$cutycapt->setCommand();
-
-// run the command
-$cutycapt->run();
+// show the generated image
+$cutycapt->show();
 ```
 
 # Options
