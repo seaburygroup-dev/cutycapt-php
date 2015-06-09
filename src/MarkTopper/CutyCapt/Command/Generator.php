@@ -1,7 +1,6 @@
 <?php
 namespace MarkTopper\CutyCapt\Command;
 
-use MarkTopper\Validator\Validator;
 use MarkTopper\xvfb_run\Runner as xvfb_run;
 
 class Generator {
@@ -137,13 +136,6 @@ class Generator {
 		return in_array($format, $this->valid_out_formats);
 	}
 	
-	protected function validator($value, $rules)
-	{
-		$method = camel_case($rules['validate']);
-		if (method_exists($this, $method)) return $this->$method($value, $rules);
-		return Validator::single($value, $rules);
-	}
-	
 	protected function baseurl()
 	{
 		$url = parse_url($this->getUrl());
@@ -167,7 +159,6 @@ class Generator {
 		
 		foreach ($this->values AS $key => $value)
 		{
-			Validator::validOrFail($value); // TODO run $this->validator() instead
 			if (isset($value['value']))
 			{
 				$v = $value['value'];
