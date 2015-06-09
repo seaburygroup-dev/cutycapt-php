@@ -12,8 +12,7 @@
   ],
   "require": {
     "marktopper/cutycapt": "1.*",
-    "marktopper/xvfb-run-php": "1.*",
-    "marktopper/validator-php": "1.*"
+    "marktopper/xvfb-run-php": "1.*"
   },
   "autoload": {
     "classmap": [
