@@ -1,5 +1,5 @@
 <?php
-namespace MarkTopper\CutyCapy;
+namespace MarkTopper\CutyCapt;
 
 use MarkTopper\CutyCapt\Command\Generator as CommandGenerator;
 
